@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<!--This is the login html page
+by Paul Boyer
+pauboyer@uat.edu
+for CSC102 SP2021Online Wk3-1-->
+
+<head>
+    <script src="loginCode.js"></script>
+    <!--linked the same style for login page as the Space Page from
+    the style.css file-->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>
+        Paul's UATSpace login Page
+    </title>
+</head>
+
+<body>
+    <h1>
+        Welcome to UATSpace login page
+    </h1>
+    <!--linked to the loginCode.js file for if, else if, and else requirements
+    for successful login criteria -->
+    <p id="loginStatus">
+        status of login..
+    </p>
+    <br>
+    <!-- form ID's created to have input boxes to fill in required data needed for 
+    successful login: first name, last name, and badge number-->
+    <form id="creditSubmit" onsubmit="return false">
+        First Name: <input type="text" id="fName" /><br>
+        Last Name: <input type="text" id="lName" /><br>
+        Badge Number: <input type="number" id="badgeID" /><br>
+        <input type="submit" onclick="checkCreds();" />
+    </form>
+
+
+</body>
+
+</html>

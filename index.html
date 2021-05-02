@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--File creator: Paul Boyer
+email: pauboyer@uat.edu
+for CSC102 class SP2021Online-->
+
+<!-- Casino Assignment
+Title: A night in Nowhere
+Scene: two weary humanoids decided to take a cruise into the gas, grub,
+and gambling town known as Nowhere. A town that if you have to ask where
+it's at you'll never find it and if you don't need to ask than you know where to go.
+It's dark, dank, and riddled with hustlers, high rollers, and hypocrites. Its
+on the outer rim of the galaxy and is the last stop before heading into the dark
+abyss of space. Going beyond Nowhere is a sure fire way of never coming back so if
+you're looking to get gone then gone is where you'll end up if you pass through
+Nowhere. For our two travelers sake though they have no intentions of gettin' gone
+for good, but need to get away from where they're at in Elsewhere. A hustling bustling
+city with a population of 2.6 million humanoid creatures that call it home.
+ 
+Now our two travelers whose name are harder spell and even harder to say because the
+dialect is an archaic english language that is rarely used and when it is it's usually to
+curse. Most languages spoken sound like Jabba the Hut when he's getting choked by Princess Leia in Star Wars.
+But at any rate our travelers are known as Charlie and Paul.
+ 
+This is the story of Charlie and Paul's venture to Nowhere…
+-->
+<html>
+
+<head>
+    <!--style added to page to give it a:
+        in the body:
+            dark orange colored background
+            added a linear gradient at 140 deg. to go from 0% white
+            to a burnt orange.
+        and for the button:
+            eggshell colored buttons
+            button height of 30pixels  
+            button width of 100pixels
+            button radius of 12pixels
+            border-color of black-->
+    <script src = "code.js"></script>
+    <script src = "dataLoader-1.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>
+        Paul's UATSpace Page
+    </title>
+</head>
+
+<body>
+    <!--Needed for DOM-->
+    <script>
+        var theTime = new Date();
+        var tempTime = new Date();
+        var time_interval = 5000;
+        var last_iteration = 0;
+        var running = true;
+        var index = 0;
+        var timer;
+
+        // to get data form dataLoader-1
+        var data = getData();
+
+        function updateDisplay(){
+            theTime = new Date();
+            
+            //fill in the table - each data row will be filled with the data from the dataloader-1 based on the seconds elapsed
+            var timeRead = data[index].time_seconds;
+            if(timeRead >= 10){
+                document.getElementById("data").rows["seconds"].innerHTML = dataRow("Time Elapsed", data[index].time_seconds, "seconds");
+                document.getElementById("data").rows["latitude"].innerHTML = dataRow("Latitude", data[index].latitude, " ");
+                document.getElementById("data").rows["longitude"].innerHTML = dataRow("Longitude", data[index].longitude, " ");
+                document.getElementById("data").rows["gps_altitude"].innerHTML = dataRow("GPS Altitude", data[index].gps_altitude, " ");
+                document.getElementById("data").rows["bmpSensor_altitude"].innerHTML = dataRow("BMP Sensor Altitude", data[index].bmpSensor_altitude, " ");
+                document.getElementById("data").rows["bmpSensor_pressure"].innerHTML = dataRow("BMP Sensor Pressure", data[index].bmpSensor_pressure, " ");
+                document.getElementById("data").rows["bmpSensor_temp"].innerHTML = dataRow("BMP Sensor Temperature", data[index].bmpSensor_temp, " ");
+                document.getElementById("data").rows["digitalSensor_temp"].innerHTML = dataRow("Digital Sensor Temperature", data[index].digitalSensor_temp, " ");
+                document.getElementById("data").rows["cssSensor_temp"].innerHTML = dataRow("CSS Sensor Temperature", data[index].cssSensor_temp, " ");
+                document.getElementById("data").rows["cssSensor_eCO2"].innerHTML = dataRow("CSS Sensor eCO2", data[index].cssSensor_eCO2, " ");
+                document.getElementById("data").rows["cssSensor_TVOC"].innerHTML = dataRow("CSS Sensor TVOC", data[index].cssSensor_TVOC, " ");
+                document.getElementById("data").rows["UV"].innerHTML = dataRow("UV", data[index].UV, " ");
+                document.getElementById("data").rows["accelX"].innerHTML = dataRow("Accel X", data[index].accelX, " ");
+                document.getElementById("data").rows["accelY"].innerHTML = dataRow("Accel Y", data[index].accelY, " ");
+                document.getElementById("data").rows["accelZ"].innerHTML = dataRow("Accel Z", data[index].accelZ, " ");
+                document.getElementById("data").rows["magneticX"].innerHTML = dataRow("Magnetic X", data[index].magneticX, " ");
+                document.getElementById("data").rows["magneticY"].innerHTML = dataRow("Magnetic Y", data[index].magneticY, " ");
+                document.getElementById("data").rows["magneticZ"].innerHTML = dataRow("Magnetic Z", data[index].magneticZ, " ");
+                document.getElementById("data").rows["gyroX"].innerHTML = dataRow("Gyro X", data[index].gyroX, " ");
+                document.getElementById("data").rows["gyroY"].innerHTML = dataRow("Gyro Y", data[index].gyroY, " ");
+                document.getElementById("data").rows["gyroZ"].innerHTML = dataRow("Gyro Z", data[index].gyroZ, " ");
+            }
+            if(index < 500){
+                index++;
+            }else{
+                index = 0;
+            }
+        }
+    </script>
+    <!--table and table data created so that the UAT Space logo and the UAT Space Program appear on the same line-->
+    <table>
+        <td><img src="UATspaceLogo.jpg"></td>
+        <td><h1>
+            <!--Changed the name from Wk1-1 to UAT Space Page
+            for Wk1-2-->
+            UAT Space Program
+        </h1></td>
+    <!--table and table data added for data types and readings for all the entries
+        below along with the readings based on the assignment intructions template.
+        the table was also given a border and the fantasy style font family in the
+        table head. The table body was given a Times New Roman font and bolder weight -->
+    </table>
+ <table border="2" id="data" width="70%" class="mainTable">
+        <col style="width: 35%;">
+        <col style="width: 35%;">
+        <thead>
+            <tr style="font-family: fantasy;">
+                <th align="left">Data Type</th>
+                <th align="left">Reading</th>
+            </tr>
+        </thead>
+        <!-- removed inout data from wk4-2 and table will autofill using the dataLoader-1 DOM that was created this week 
+        5-1-->
+        <tbody>
+            <tr id="seconds"></tr>
+            <tr id="latitude"></tr>
+            <tr id="longitude"></tr>
+            <tr id="gps_altitude"></tr>
+            <tr id="bmpSensor_altitude"></tr>
+            <tr id="bmpSensor_pressure"></tr>
+            <tr id="bmpSensor_temp"></tr>
+            <tr id="digitalSensor_temp"></tr>
+            <tr id="cssSensor_temp"></tr>
+            <tr id="cssSensor_eCO2"></tr>
+            <tr id="cssSensor_TVOC"></tr>
+            <tr id="UV"></tr>
+            <tr id="accelX"></tr>
+            <tr id="accelY"></tr>
+            <tr id="accelZ"></tr>
+            <tr id="magneticX"></tr>
+            <tr id="magneticY"></tr>
+            <tr id="magneticZ"></tr>
+            <tr id="gyroX"></tr>
+            <tr id="gyroY"></tr>
+            <tr id="gyroZ"></tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+ <!--Start and Stop button created
+    button class is located in the style.css 
+    sound buttons added to play sounds on the space page-->
+    <button class="button" id="startButton"onclick="start();">Start</button>
+    <button id="stopButton"onclick="stop();"class="button">Stop</button>
+    <br>
+    <br>
+    <button class="playButton" onclick="playStation();">Play Sound</button><br>
+    <!--<button class="button" onclick="playSpaceOddity();">Play Bowie</button><br>-->
+
+<br>
+<br>
+     <!-- added craps results function for the win lose or push notification 
+        and can be found in the js file -->
+    <h3 id="crapsResults">Results of the Craps Round</h3>
+    <br>
+     <!--Die1, Die2, and the Sum of the Dice results added and can found in
+    playCraps function-->
+    Die1 is: <div id="die1Res">needs to be rolled</div><br>
+    Die2 is: <div id="die2Res">needs to be rolled</div><br>
+    Sum of Die1 + Die2 is: <div id="sumRes">needs to be rolled</div><br>
+ <!-- Button created so that you can roll the die to play craps 
+        button class can be found in the style.css-->
+    <button class="lgButton" onclick="playCraps();">Play Craps Here </button>
+<br>
+<br>
+<br>
+<!-- added to link the html and the js for commmunications and operations-->
+<div id="sandboxDisplay">sandbox Display</div>
+<br>
+ <!-- Button created so that you can run the sandbox timer to blastoff! 
+        button class can be found in the style.css-->
+<button class="sandButton" onclick="runSandbox();">Try it!</button>
+    <!--NOTES: in order to format document in VisualStudioCode on
+               a chromebook use: CTRL+SHIFT+I-->
+
+</body>
+
+</html>

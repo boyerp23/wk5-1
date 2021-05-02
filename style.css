@@ -1,0 +1,47 @@
+/* This is the login html page
+by Paul Boyer
+pauboyer@uat.edu
+for CSC102 SP2021Online Wk3-1*/
+
+body {
+    background-color: darkorange;
+    background-image: linear-gradient(140deg, white 0%, #b1711f);
+}
+
+.button {
+    background-color: rgb(216, 211, 206);
+    width: 100px;
+    height: 30px;
+    border-radius: 12px;
+    border-color: black;
+}
+
+.lgButton {
+    background-color: rgb(216, 211, 206);
+    width: 150px;
+    height: 30px;
+    border-radius: 12px;
+    border-color: black;
+}
+
+.sandButton {
+    background-color: rgb(216, 211, 206);
+    width: 100px;
+    height: 30px;
+    border-radius: 12px;
+    border-color: red;
+}
+
+.mainTable {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    border-color: black;
+}
+
+.playButton {
+    background-color: rgb(216, 211, 206);
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    border-color: rgb(9, 224, 224);
+}
